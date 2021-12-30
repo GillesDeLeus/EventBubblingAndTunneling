@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32002.261
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventBubblingAndTunneling", "EventBubblingAndTunneling\EventBubblingAndTunneling.csproj", "{EB5CC25C-8375-4974-9764-016D16425289}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EB5CC25C-8375-4974-9764-016D16425289}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB5CC25C-8375-4974-9764-016D16425289}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB5CC25C-8375-4974-9764-016D16425289}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB5CC25C-8375-4974-9764-016D16425289}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C8DFF302-04E8-4679-BC39-C350D6A3F863}
+	EndGlobalSection
+EndGlobal

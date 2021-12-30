@@ -1,0 +1,238 @@
+﻿<Window x:Class="EventBubblingAndTunneling.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EventBubblingAndTunneling"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="525" Width="1200">
+	<Grid ShowGridLines="False">
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="*"></ColumnDefinition>
+			<ColumnDefinition Width="*"></ColumnDefinition>
+			<ColumnDefinition Width="*"></ColumnDefinition>
+		</Grid.ColumnDefinitions>
+
+		<!--The Bubbling example-->
+		<Grid MouseLeftButtonDown="Bubble_MouseLeftButtonDown">
+			<StackPanel x:Name="bubbling"
+						Orientation="Horizontal"
+						Grid.Column="0"
+						MouseLeftButtonDown="Bubble_MouseLeftButtonDown">
+				<StackPanel Orientation="Vertical">
+					<Border BorderThickness="1 2 1 2"
+							BorderBrush="Black"
+							Margin="0,0,-8,5"
+							MouseLeftButtonDown="Bubble_MouseLeftButtonDown">
+						<TextBlock HorizontalAlignment="Center"
+								   FontSize="16"
+								   FontWeight="Bold"
+								   Margin="4"
+								   MouseLeftButtonDown="Bubble_MouseLeftButtonDown">Bubbling</TextBlock>
+					</Border>
+					<StackPanel Orientation="Horizontal"
+								HorizontalAlignment="Center"
+								Margin="10,0,10,0"
+								MouseLeftButtonDown="Bubble_MouseLeftButtonDown">
+						<Button Width="50"
+								Height="50"
+								Margin="0,0,5,0"
+								MouseLeftButtonDown="Bubble_MouseLeftButtonDown">Button</Button>
+						<Rectangle Width="50"
+								   Height="50"
+								   Fill="blue"
+								   Margin="0,0,5,0"
+								   MouseLeftButtonDown="Bubble_MouseLeftButtonDown">
+						</Rectangle>
+						<TextBlock Margin="0,0,5,0"
+								   MouseLeftButtonDown="Bubble_MouseLeftButtonDown">textblock</TextBlock>
+						<Border BorderBrush="Black"
+								BorderThickness="3px"
+								MouseLeftButtonDown="Bubble_MouseLeftButtonDown">
+							<Rectangle Width="50"
+									   Height="50"
+									   Fill="Beige"
+									   MouseLeftButtonDown="Bubble_MouseLeftButtonDown"></Rectangle>
+						</Border>
+						<Ellipse Width="50"
+								 Height="50"
+								 Fill="Red"
+								 MouseLeftButtonDown="Bubble_MouseLeftButtonDown"></Ellipse>
+					</StackPanel>
+					<ListBox Name="messageList"
+							 Width="375"
+							 Height="275"
+							 Margin="10"
+							 BorderBrush="Black"
+							 Background="Beige"
+							 MouseLeftButtonDown="Bubble_MouseLeftButtonDown">
+					</ListBox>
+					<Button x:Name="BtnClear"
+							HorizontalAlignment="Center"
+							Width="50"
+							Height="50"
+							Margin="25,0,0,0"
+							Click="BtnClear_Click">Clear</Button>
+				</StackPanel>
+			</StackPanel>
+		</Grid>
+
+		<!--the Tunneling example-->
+		<Grid PreviewMouseLeftButtonDown="Tunnel_PreviewMouseLeftButtonDown"
+			  Grid.Column="1">
+			<StackPanel x:Name="Tunneling"
+						Orientation="Horizontal"
+						Grid.Column="0"
+						PreviewMouseLeftButtonDown="Tunnel_PreviewMouseLeftButtonDown">
+				<StackPanel Orientation="Vertical">
+					<Border BorderThickness="1 2 1 2"
+							BorderBrush="Black"
+							Margin="0,0,-8,5"
+							PreviewMouseLeftButtonDown="Tunnel_PreviewMouseLeftButtonDown">
+						<TextBlock HorizontalAlignment="Center"
+								   FontSize="16"
+								   FontWeight="Bold"
+								   Margin="4"
+								   PreviewMouseLeftButtonDown="Tunnel_PreviewMouseLeftButtonDown">Tunneling</TextBlock>
+					</Border>
+					<StackPanel Orientation="Horizontal"
+								HorizontalAlignment="Center"
+								Margin="10,0,10,0"
+								PreviewMouseLeftButtonDown="Tunnel_PreviewMouseLeftButtonDown">
+						<Button Width="50"
+								Height="50"
+								Margin="0,0,5,0"
+								PreviewMouseLeftButtonDown="Tunnel_PreviewMouseLeftButtonDown">Button</Button>
+						<Rectangle Width="50"
+								   Height="50"
+								   Fill="blue"
+								   Margin="0,0,5,0"
+								   PreviewMouseLeftButtonDown="Tunnel_PreviewMouseLeftButtonDown">
+						</Rectangle>
+						<TextBlock Margin="0,0,5,0"
+								   PreviewMouseLeftButtonDown="Tunnel_PreviewMouseLeftButtonDown">textblock</TextBlock>
+						<Border BorderBrush="Black"
+								BorderThickness="3px"
+								PreviewMouseLeftButtonDown="Tunnel_PreviewMouseLeftButtonDown">
+							<Rectangle Width="50"
+									   Height="50"
+									   Fill="Beige"
+									   PreviewMouseLeftButtonDown="Tunnel_PreviewMouseLeftButtonDown"></Rectangle>
+						</Border>
+						<Ellipse Width="50"
+								 Height="50"
+								 Fill="Red"
+								 PreviewMouseLeftButtonDown="Tunnel_PreviewMouseLeftButtonDown"></Ellipse>
+					</StackPanel>
+					<ListBox Name="messageList2"
+							 Width="375"
+							 Height="275"
+							 Margin="10"
+							 BorderBrush="Black"
+							 Background="Beige"
+							 PreviewMouseLeftButtonDown="Tunnel_PreviewMouseLeftButtonDown">
+					</ListBox>
+					<Button x:Name="BtnClear2"
+							HorizontalAlignment="Center"
+							Width="50"
+							Height="50"
+							Margin="25,0,0,0"
+							Click="BtnClear_Click">Clear</Button>
+				</StackPanel>
+			</StackPanel>
+		</Grid>
+
+		<!--Grid that shows the entire tunneling and bubbling-->
+		<Grid x:Name="grid"
+			  PreviewMouseLeftButtonDown="Both_PreviewMouseLeftButtonDown"
+			  MouseLeftButtonDown="Both_MouseLeftButtonDown"
+			  Grid.Column="2">
+			<StackPanel x:Name="Both"
+						Orientation="Horizontal"
+						Grid.Column="0"
+						PreviewMouseLeftButtonDown="Both_PreviewMouseLeftButtonDown"
+						MouseLeftButtonDown="Both_MouseLeftButtonDown">
+				<StackPanel Orientation="Vertical"
+							PreviewMouseLeftButtonDown="Both_PreviewMouseLeftButtonDown"
+							MouseLeftButtonDown="Both_MouseLeftButtonDown">
+					<Border BorderThickness="1 2 1 2"
+							BorderBrush="Black"
+							Margin="0,0,-8,5"
+							PreviewMouseLeftButtonDown="Both_PreviewMouseLeftButtonDown"
+							MouseLeftButtonDown="Both_MouseLeftButtonDown">
+						<TextBlock HorizontalAlignment="Center"
+								   FontSize="16"
+								   FontWeight="Bold"
+								   Margin="4"
+								   PreviewMouseLeftButtonDown="Both_PreviewMouseLeftButtonDown"
+								   MouseLeftButtonDown="Both_MouseLeftButtonDown">Both</TextBlock>
+					</Border>
+					<StackPanel x:Name="panel"
+								Orientation="Horizontal"
+								HorizontalAlignment="Center"
+								Margin="10,0,10,0"
+								MouseLeftButtonDown="Both_MouseLeftButtonDown"
+								PreviewMouseLeftButtonDown="Both_PreviewMouseLeftButtonDown">
+						<Button Width="50"
+								Height="50"
+								Margin="0,0,5,0"
+								MouseLeftButtonDown="Both_MouseLeftButtonDown"
+								PreviewMouseLeftButtonDown="Both_PreviewMouseLeftButtonDown"
+								Click="Btn_Click">Button</Button>
+						<Rectangle Width="50"
+								   Height="50"
+								   Fill="blue"
+								   Margin="0,0,5,0"
+								   PreviewMouseLeftButtonDown="Both_PreviewMouseLeftButtonDown"
+								   MouseLeftButtonDown="Both_MouseLeftButtonDown">
+						</Rectangle>
+						<TextBlock Margin="0,0,5,0"
+								   PreviewMouseLeftButtonDown="Both_PreviewMouseLeftButtonDown"
+								   MouseLeftButtonDown="Both_MouseLeftButtonDown">textblock</TextBlock>
+						<Border BorderBrush="Black"
+								BorderThickness="3px"
+								PreviewMouseLeftButtonDown="Both_PreviewMouseLeftButtonDown"
+								MouseLeftButtonDown="Both_MouseLeftButtonDown">
+							<Rectangle Width="50"
+									   Height="50"
+									   Fill="Beige"
+									   PreviewMouseLeftButtonDown="Both_PreviewMouseLeftButtonDown"
+									   MouseLeftButtonDown="Both_MouseLeftButtonDown"></Rectangle>
+						</Border>
+						<Ellipse Width="50"
+								 Height="50"
+								 Fill="Red"
+								 PreviewMouseLeftButtonDown="Both_PreviewMouseLeftButtonDown"
+								 MouseLeftButtonDown="Both_MouseLeftButtonDown"></Ellipse>
+					</StackPanel>
+					<ListBox Name="messageList3"
+							 Width="375"
+							 Height="275"
+							 Margin="10"
+							 BorderBrush="Black"
+							 Background="Beige"
+							 PreviewMouseLeftButtonDown="Both_PreviewMouseLeftButtonDown"
+							 MouseLeftButtonDown="Both_MouseLeftButtonDown">
+					</ListBox>
+					<StackPanel Grid.Column="2"
+								HorizontalAlignment="Center"
+								VerticalAlignment="Center"
+								Margin="10,0,0,10">
+						<CheckBox x:Name="suppressCheckBox"
+								  Content="Suppress Event"
+								  FontSize="15"
+								  Background="Beige"></CheckBox>
+						<TextBlock ClipToBounds="True"
+								   Margin="-5,0,0,0">if you check this checkbox, the events linked with the shapes and buttons <LineBreak /> at the top of this grid will be supressed</TextBlock>
+					</StackPanel>
+					<Button x:Name="BtnClear3"
+							HorizontalAlignment="Center"
+							Width="50"
+							Height="50"
+							Margin="0,0,0,0"
+							Click="BtnClear_Click">Clear</Button>
+				</StackPanel>
+			</StackPanel>
+		</Grid>
+	</Grid>
+</Window>
